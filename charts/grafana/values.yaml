@@ -289,7 +289,8 @@ ingress:
   pathType: Prefix
 
   hosts:
-    - chart-example.local
+    - grafana.kaledo.ai
+    - grafana-ext.monitoring.svc.cluster.local
   ## Extra paths to prepend to every host configuration. This is useful when working with annotation based services.
   extraPaths: []
   # - path: /*
@@ -864,7 +865,7 @@ grafana.ini:
   grafana_net:
     url: https://grafana.net
   server:
-    domain: grafana.kaledo.ai
+    domain: "{{ if (and .Values.ingress.enabled .Values.ingress.hosts) }}{{ tpl (.Values.ingress.hosts | first) . }}{{ else }}''{{ end }}"
 ## grafana Authentication can be enabled with the following values on grafana.ini
  # server:
       # The full public facing url you use in browser, used for redirects and emails
