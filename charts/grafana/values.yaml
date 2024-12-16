@@ -861,10 +861,12 @@ grafana.ini:
     check_for_updates: true
   log:
     mode: console
+  security: 
+    cookie_samesite: none
   grafana_net:
     url: https://grafana.net
   server:
-    domain: "{{ if (and .Values.ingress.enabled .Values.ingress.hosts) }}{{ tpl (.Values.ingress.hosts | first) . }}{{ else }}''{{ end }}"
+    domain: grafana.kaledo.ai
     root_url: https://grafana.kaledo.ai
 ## grafana Authentication can be enabled with the following values on grafana.ini
  # server:
