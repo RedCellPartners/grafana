@@ -289,8 +289,7 @@ ingress:
   pathType: Prefix
 
   hosts:
-    - grafana.kaledo.ai
-    - grafana-ext.monitoring.svc.cluster.local
+    - chart-example.local
   ## Extra paths to prepend to every host configuration. This is useful when working with annotation based services.
   extraPaths: []
   # - path: /*
