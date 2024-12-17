@@ -1091,6 +1091,16 @@ containers:
         containerPort: 9094
         protocol: UDP
     env:
+      - name: GRAFANA_AUTHENTIK_CLIENT_ID
+        valueFrom: 
+          secretKeyRef: 
+            name: {{ .Values.vault.hcpSecretAppName }}
+            key: GRAFANA_AUTHENTIK_CLIENT_ID
+      - name: GRAFANA_AUTHENTIK_CLIENT_SECRET
+        valueFrom: 
+          secretKeyRef: 
+            name: {{ .Values.vault.hcpSecretAppName }}
+            key: GRAFANA_AUTHENTIK_CLIENT_SECRET
       - name: POD_IP
         valueFrom:
           fieldRef:
