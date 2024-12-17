@@ -15,6 +15,10 @@ global:
   #   - pullSecret1
   #   - pullSecret2
   imagePullSecrets: []
+  
+vault:
+  hcpSecretAppName: grafana-secrets  # Name of your HCP Vault Secrets application
+  hcpSecretRefresh: 1h               # How often to refresh secrets
 
 rbac:
   create: true

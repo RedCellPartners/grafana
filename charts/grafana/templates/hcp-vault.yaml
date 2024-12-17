@@ -1,0 +1,21 @@
+{{- if .Values.vault.hcpSecretAppName }}
+apiVersion: secrets.hashicorp.com/v1beta1
+kind: HCPVaultSecretsApp
+metadata:
+  name: {{ .Values.vault.hcpSecretAppName }}
+  namespace: {{ include "grafana.namespace" . }}
+  labels:
+    {{- include "grafana.labels" . | nindent 4 }}
+spec:
+  appName: {{ .Values.vault.hcpSecretAppName }}
+  rolloutRestartTargets:
+    - kind: {{ if .Values.useStatefulSet }}StatefulSet{{ else }}Deployment{{ end }}
+      name: {{ include "grafana.fullname" . }}
+  destination:
+    create: true
+    labels:
+      {{- include "grafana.labels" . | nindent 6 }}
+      hvs: "true"
+    name: grafana-secrets
+  refreshAfter: {{ default "1h" .Values.vault.hcpSecretRefresh }}
+{{- end }}
