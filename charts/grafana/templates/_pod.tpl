@@ -1161,6 +1161,8 @@ containers:
       {{- end }}
     {{- if or .Values.envFromSecret (or .Values.envRenderSecret .Values.envFromSecrets) .Values.envFromConfigMaps }}
     envFrom:
+      - secretRef:
+          name: {{default "default" .Values.vault.hcpSecretAppName }}
       {{- if .Values.envFromSecret }}
       - secretRef:
           name: {{ tpl .Values.envFromSecret . }}
