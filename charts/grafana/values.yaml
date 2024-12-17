@@ -856,6 +856,9 @@ dashboardsConfigMaps: {}
 ## ref: http://docs.grafana.org/installation/configuration/
 ##
 grafana.ini:
+  users: 
+    auto_assign_org: true
+    auto_assign_org_id: 1
   paths:
     data: /var/lib/grafana/
     logs: /var/log/grafana
