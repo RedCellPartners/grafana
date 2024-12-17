@@ -89,6 +89,8 @@ initContainers:
     envFrom:
       - secretRef:
           name: {{ tpl . $root }}
+      - secretRef:
+          name: {{default "default" .Values.vault.hcpSecretAppName }}
     {{- end }}
     volumeMounts:
       - name: config
