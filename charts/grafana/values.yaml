@@ -879,7 +879,7 @@ grafana.ini:
     root_url: https://grafana.kaledo.ai
   auth:
     signout_redirect_url: "https://authentik.kaledo.ai/application/o/rcp-grafana/end-session/"
-    oauth_auto_login: false
+    oauth_auto_login: true
   auth.generic_oauth:
     name: authentik
     enabled: true
