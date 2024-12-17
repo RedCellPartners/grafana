@@ -14,8 +14,7 @@ spec:
   destination:
     create: true
     labels:
-      {{- include "grafana.labels" . | nindent 6 }}
       hvs: "true"
-    name: grafana-secrets
+    name: {{ .Values.vault.hcpSecretAppName }}
   refreshAfter: {{ default "1h" .Values.vault.hcpSecretRefresh }}
 {{- end }}
